@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Veena D Bachani — Franchise & Business Growth</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --bg1: linear-gradient(135deg,#0f172a 0%,#0b2545 50%,#0a2b3a 100%);
+            --accent: linear-gradient(90deg,#ff7ab6,#7b61ff);
+            --card: rgba(255,255,255,0.06);
+            --glass: rgba(255,255,255,0.04);
+            --muted: rgba(255,255,255,0.7);
+            --glass-border: rgba(255,255,255,0.06);
+            --radius: 14px;
+            --shadow: 0 8px 30px rgba(2,6,23,0.65);
+        }
+
+        html { scroll-behavior: smooth; }
+        *{box-sizing:border-box}
+        body{
+            margin:0;
+            font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            color:#e6eef8;
+            background: var(--bg1);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            min-height:100vh;
+            line-height:1.5;
+        }
+
+        /* Top nav */
+        .nav{
+            position:fixed;
+            top:16px;
+            left:50%;
+            transform:translateX(-50%);
+            z-index:1000;
+            width:calc(100% - 48px);
+            max-width:1100px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:12px;
+            padding:10px 14px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-radius:12px;
+            box-shadow: var(--shadow);
+            border:1px solid var(--glass-border);
+            backdrop-filter: blur(6px);
+        }
+        .brand{
+            display:flex;
+            gap:12px;
+            align-items:center;
+            text-decoration:none;
+            color:inherit;
+        }
+        .logo{
+            width:44px;height:44px;border-radius:10px;
+            background:var(--accent);
+            display:grid;place-items:center;
+            font-family:"Poppins";
+            font-weight:700;
+            color:white;
+            box-shadow: 0 6px 24px rgba(123,97,255,0.2);
+        }
+        .brand h4{margin:0;font-size:15px}
+        .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+        nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+        nav a{
+            color:var(--muted);
+            text-decoration:none;
+            font-weight:600;
+            padding:8px 10px;
+            border-radius:10px;
+            transition:all .22s ease;
+            font-size:14px;
+        }
+        nav a:hover{color:white;background:rgba(255,255,255,0.03);transform:translateY(-2px)}
+
+        /* Mobile nav */
+        .menu-toggle{display:none;background:transparent;border:0;color:var(--muted);font-weight:700}
+
+        /* Hero */
+        .hero{
+            min-height:100vh;
+            display:grid;
+            align-items:center;
+            padding:120px 24px 60px;
+            max-width:1200px;
+            margin:0 auto;
+            gap:28px;
+        }
+        .hero-grid{
+            display:grid;
+            grid-template-columns:1fr 420px;
+            gap:28px;
+            align-items:center;
+        }
+        .hero-left h1{
+            font-family:"Poppins";
+            font-size: clamp(30px, 5.6vw, 48px);
+            margin:0 0 12px 0;
+            letter-spacing:-0.6px;
+            line-height:1.02;
+            background: linear-gradient(90deg,#fff 0%, #cfe9ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color:transparent;
+            text-shadow:0 6px 30px rgba(0,0,0,0.35);
+        }
+        .hero-left p.lead{
+            margin:0 0 18px 0;
+            color:var(--muted);
+            font-size:16px;
+        }
+        .ctas{display:flex;gap:12px;flex-wrap:wrap}
+        .btn{
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            padding:12px 18px;
+            border-radius:12px;
+            cursor:pointer;
+            border:0;
+            color:white;
+            font-weight:700;
+            background:var(--accent);
+            box-shadow: 0 8px 30px rgba(123,97,255,0.18);
+            transform:translateY(0);
+            transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+            text-decoration:none;
+        }
+        .btn.secondary{
+            background:transparent;
+            border:1px solid rgba(255,255,255,0.08);
+            color:var(--muted);
+            font-weight:600;
+        }
+        .btn:active{transform:translateY(1px)}
+        .hero-card{
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+            border-radius:var(--radius);
+            padding:20px;
+            box-shadow: var(--shadow);
+            border:1px solid var(--glass-border);
+        }
+        .profile{
+            display:flex;
+            gap:14px;
+            align-items:center;
+        }
+        .avatar{
+            width:74px;height:74px;border-radius:12px;background:linear-gradient(135deg,#ffd1e8,#c7b6ff);
+            display:grid;place-items:center;font-family:"Poppins"; font-weight:800;color:#081028;
+            box-shadow:0 8px 30px rgba(0,0,0,0.3);
+        }
+        .meta small{display:block;color:var(--muted);font-size:13px}
+        .stats{display:flex;gap:10px;margin-top:14px}
+        .stat{background:var(--glass);padding:8px 10px;border-radius:10px;font-weight:700;color:white;box-shadow:inset 0 -8px 30px rgba(0,0,0,0.2)}
+
+        /* Features */
+        .features{
+            padding:60px 24px;
+            max-width:1100px;margin:0 auto;
+        }
+        .features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+        .feature{
+            background:var(--card);
+            padding:20px;border-radius:14px;
+            border:1px solid var(--glass-border);
+            transition:transform .28s ease, box-shadow .28s ease;
+            min-height:120px;
+            display:flex;gap:12px;align-items:flex-start;
+        }
+        .feature:hover{transform:translateY(-8px);box-shadow:0 14px 45px rgba(5,9,25,0.6)}
+        .feature .icon{
+            width:46px;height:46px;border-radius:10px;display:grid;place-items:center;
+            background:linear-gradient(180deg,rgba(255,255,255,0.04), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)
+        }
+        .feature h4{margin:0 0 6px 0}
+        .feature p{margin:0;color:var(--muted);font-size:14px}
+
+        /* Portfolio */
+        .portfolio{padding:40px 24px 80px;max-width:1100px;margin:0 auto}
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:14px;
+        }
+        .card{
+            border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border:1px solid var(--glass-border);position:relative;
+        }
+        .card img{width:100%;height:200px;object-fit:cover;display:block;filter:grayscale(.02) contrast(1.05)}
+        .card-body{padding:12px}
+        .card h5{margin:0 0 8px 0}
+        .card p{margin:0;color:var(--muted);font-size:13px}
+
+        /* CTA strip */
+        .cta-strip{
+            margin:40px 24px;
+            padding:30px;
+            border-radius:14px;
+            background: linear-gradient(90deg, rgba(123,97,255,0.12), rgba(255,122,182,0.06));
+            border:1px solid rgba(255,255,255,0.04);
+            max-width:1100px;margin-left:auto;margin-right:auto;display:flex;justify-content:space-between;align-items:center;gap:16px;
+        }
+        .cta-strip h3{margin:0}
+        .cta-strip p{margin:0;color:var(--muted)}
+        .cta-strip .cta-actions{display:flex;gap:12px}
+
+        /* Footer */
+        footer{
+            padding:26px 24px;
+            text-align:center;color:var(--muted);
+            border-top:1px solid rgba(255,255,255,0.02);
+            margin-top:40px;
+        }
+        .socials{display:flex;gap:12px;justify-content:center;margin-bottom:8px}
+        .sbtn{width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.03);display:grid;place-items:center;color:var(--muted);text-decoration:none}
+
+        /* Responsive */
+        @media (max-width:980px){
+            .hero-grid{grid-template-columns:1fr;gap:18px}
+            .features-grid{grid-template-columns:repeat(2,1fr)}
+            .grid{grid-template-columns:repeat(2,1fr)}
+            .nav{padding:8px}
+            nav ul{display:none}
+            .menu-toggle{display:inline-block}
+        }
+        @media (max-width:560px){
+            .features-grid{grid-template-columns:1fr}
+            .grid{grid-template-columns:1fr}
+            .hero{padding-top:90px}
+            .nav{left:12px;transform:none;width:calc(100% - 24px)}
+        }
+
+        /* subtle entrance animations */
+        .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s cubic-bezier(.2,.9,.2,1)}
+        .reveal.show{opacity:1;transform:none}
+        .float {
+            animation:floaty 6s ease-in-out infinite;
+        }
+        @keyframes floaty{
+            0%{transform:translateY(0)}
+            50%{transform:translateY(-8px)}
+            100%{transform:translateY(0)}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="nav" role="banner">
+        <a class="brand" href="#hero" aria-label="home">
+            <img class="logo" src="WhatsApp Image 2025-08-22 at 16.18.23.jpeg" alt="Corrina Almeida logo" width="44" height="44" loading="lazy">
+            <div>
+                <h4>Corrina Almeida</h4>
+                <p>Franchise & Business Development</p>
+            </div>
+        </a>
+
+        <nav role="navigation" aria-label="Main navigation">
+            <button class="menu-toggle" aria-expanded="false" aria-controls="navlist">☰</button>
+            <ul id="navlist">
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <main id="hero" class="hero" role="main">
+        <div class="hero-grid">
+            <div class="hero-left">
+                <h1 class="reveal">Drive Growth • Build Franchises • Scale Regions</h1>
+                <p class="lead reveal">Strategic franchise development, investor onboarding, and regional expansion across South India. Transforming concepts into repeatable, profitable operations.</p>
+
+                <div class="ctas reveal">
+                    <a href="#contact" class="btn">Connect With Corrina</a>
+                    <a href="#portfolio" class="btn secondary">View Work</a>
+                </div>
+
+                <div class="reveal" style="margin-top:22px;opacity:.95">
+                    <small style="color:var(--muted)">Based in Chennai • Open to consulting, partnerships & advisory</small>
+                </div>
+            </div>
+            <aside class="hero-card float reveal" aria-hidden="false">
+                <div class="profile">
+                    <img class="avatar" src="WhatsApp Image 2025-08-22 at 16.18.23.jpeg" alt="Corrina Almeida" width="110" height="110" loading="lazy" style="width:110px;height:110px;object-fit:cover;border-radius:12px;display:block;">
+                    <div class="meta">
+                        <div style="font-weight:700">Corrina Almeida</div>
+                        <small>Franchise Development • Sales • Partnerships</small>
+                    </div>
+                </div>
+
+                <div class="stats" style="margin-top:14px">
+                    <div class="stat">5 States Covered</div>
+                    <div class="stat">100+ Leads</div>
+                </div>
+
+                <div style="margin-top:16px;color:var(--muted);font-size:13px">
+                    <strong>Quick Offer:</strong>
+                    <p style="margin:8px 0 0 0">Free 20-min consultation to review expansion strategy.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- About / Summary -->
+    <section id="about" style="max-width:1100px;margin:0 auto;padding:28px 24px" class="reveal">
+        <h2 style="margin:0 0 10px 0">Summary</h2>
+        <p style="margin:0;color:var(--muted)">A results-driven professional with hands-on experience in franchise acquisition, investor relations, and market expansion. Proven ability to build scalable processes and drive sustainable growth through partnerships and strategic initiatives.</p>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features" aria-labelledby="features-heading">
+        <h2 id="features-heading" style="max-width:1100px;margin:0 auto 18px 24px">Services & Highlights</h2>
+        <div class="features-grid">
+            <div class="feature reveal">
+                <div class="icon" aria-hidden="true">
+                    <!-- simple SVG icon -->
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M12 3v18"/></svg>
+                </div>
+                <div>
+                    <h4>Franchise Strategy</h4>
+                    <p>End-to-end playbooks for franchise models, pricing, and operational SOPs to enable repeatability.</p>
+                </div>
+            </div>
+
+            <div class="feature reveal">
+                <div class="icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+                </div>
+                <div>
+                    <h4>Investor Onboarding</h4>
+                    <p>Targeted investor outreach, pitch materials, and deal structuring to secure funding and partnerships.</p>
+                </div>
+            </div>
+
+            <div class="feature reveal">
+                <div class="icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12l-4-4-4 4-4-4-4 4"/></svg>
+                </div>
+                <div>
+                    <h4>Operations & Training</h4>
+                    <p>Training frameworks for franchisees, quality checks and processes to maintain brand standards.</p>
+                </div>
+            </div>
+
+            <div class="feature reveal">
+                <div class="icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5-5 5 5"/></svg>
+                </div>
+                <div>
+                    <h4>Marketing & Launch</h4>
+                    <p>Local launch campaigns, activations and co-marketing initiatives that drive fast traction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio / Showcase -->
+    <section id="portfolio" class="portfolio" aria-labelledby="portfolio-heading">
+        <h2 id="portfolio-heading" style="margin:0 0 12px 0">Portfolio & Case Studies</h2>
+
+        <div class="grid">
+            <div class="card reveal">
+                <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a7d6b1a2b7f1a8c7d91f9d6f4b6b8a6" alt="Launch 1">
+                <div class="card-body">
+                    <h5>Multi-city Launch</h5>
+                    <p>Coordinated launches across multiple cities with franchise onboarding for fast scale.</p>
+                </div>
+            </div>
+
+            <div class="card reveal">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=0c8d6f93f2c4a6f1b2b6d8f1a6c3b5d8" alt="Launch 2">
+                <div class="card-body">
+                    <h5>Investor Sourcing</h5>
+                    <p>Structured investor outreach that resulted in multiple funded franchise deals.</p>
+                </div>
+            </div>
+
+            <div class="card reveal">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=9e7f8b1a2a3c4d5f6b7c8d9a0b1c2d3e" alt="Launch 3">
+                <div class="card-body">
+                    <h5>Training Programs</h5>
+                    <p>Operational training and SOPs to ensure consistent brand experience across outlets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Strip -->
+    <section class="cta-strip reveal" role="region" aria-label="Get in touch">
+        <div>
+            <h3 style="margin:0">Ready to scale?</h3>
+            <p style="margin:6px 0 0 0;color:var(--muted)">Book a free 20-minute consultation to review a franchise strategy tailored to your brand.</p>
+        </div>
+        <div class="cta-actions">
+            <a class="btn" href="#contact">Book Consultation</a>
+            <a class="btn secondary" href="#portfolio">See Case Studies</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="max-width:900px;margin:0 auto;padding:28px 24px 80px" class="reveal">
+        <h2 style="margin:0 0 8px 0">Contact</h2>
+        <p style="margin:0 0 18px 0;color:var(--muted)">Email: <a href="mailto:veenabachani89@gmail.com" style="color:#fff;text-decoration:underline">veenabachani89@gmail.com</a> • Phone: +91 8015155095</p>
+
+        <form id="contactForm" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+            <input name="name" placeholder="Your name" required style="padding:12px;border-radius:10px;border:1px solid var(--glass-border);background:transparent;color:inherit">
+            <input name="email" type="email" placeholder="Email" required style="padding:12px;border-radius:10px;border:1px solid var(--glass-border);background:transparent;color:inherit">
+            <input name="phone" placeholder="Phone (optional)" style="padding:12px;border-radius:10px;border:1px solid var(--glass-border);background:transparent;color:inherit">
+            <select name="service" style="padding:12px;border-radius:10px;border:1px solid var(--glass-border);background:transparent;color:inherit">
+                <option value="">Interested in...</option>
+                <option>Franchise Strategy</option>
+                <option>Investor Onboarding</option>
+                <option>Training & Ops</option>
+            </select>
+            <textarea name="message" rows="4" placeholder="Your message" style="grid-column:1 / -1;padding:12px;border-radius:10px;border:1px solid var(--glass-border);background:transparent;color:inherit"></textarea>
+            <div style="grid-column:1 / -1;display:flex;gap:10px;justify-content:flex-end">
+                <button type="submit" class="btn">Send Message</button>
+                <button type="button" id="resetBtn" class="btn secondary">Reset</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="socials">
+            <a class="sbtn" href="https://www.linkedin.com/in/corrinalmeida/" target="_blank" aria-label="LinkedIn">in</a>
+            <a class="sbtn" href="mailto:corrinalmeida@yahoo.com" aria-label="Email">✉</a>
+        </div>
+        <div style="font-size:13px">© 2025 Veena D Bachani — Designed by Veena</div>
+    </footer>
+
+    <script>
+        /* Minimal interactivity + reveal-on-scroll + mobile nav toggle */
+        (function(){
+            // Mobile nav toggle
+            const toggle = document.querySelector('.menu-toggle');
+            const navlist = document.getElementById('navlist');
+            toggle && toggle.addEventListener('click', () => {
+                const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', String(!expanded));
+                navlist.style.display = expanded ? 'none' : 'flex';
+                navlist.style.flexDirection = 'column';
+                navlist.style.position = 'absolute';
+                navlist.style.right = '18px';
+                navlist.style.top = '62px';
+                navlist.style.background = 'rgba(7,13,23,0.6)';
+                navlist.style.padding = '8px';
+                navlist.style.borderRadius = '10px';
+            });
+
+            // Reveal-on-scroll
+            const r = document.querySelectorAll('.reveal');
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if(e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); }
+                });
+            }, {threshold:0.12});
+            r.forEach(el => obs.observe(el));
+
+            // Smooth scroll offset fix for fixed nav (optional)
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(a => {
+                a.addEventListener('click', (e) => {
+                    const href = a.getAttribute('href');
+                    if(!href || href === '#') return;
+                    const target = document.querySelector(href);
+                    if(!target) return;
+                    e.preventDefault();
+                    const y = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({top: y, behavior: 'smooth'});
+                });
+            });
+
+            // Contact form demo behavior
+            const form = document.getElementById('contactForm');
+            form && form.addEventListener('submit', (ev) => {
+                ev.preventDefault();
+                alert('Thanks — your message has been noted. (This is a demo form.)');
+                form.reset();
+            });
+            const rb = document.getElementById('resetBtn');
+            rb && rb.addEventListener('click', () => form.reset());
+        })();
+    </script>
+</body>
+</html>
